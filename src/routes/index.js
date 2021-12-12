@@ -3,6 +3,7 @@ import Catalogue from 'pages/catalogue';
 import DashboardComponent from 'pages/dashboard';
 import Homepage from 'pages/homepage';
 import { useRoutes } from 'react-router-dom';
+import Detail from 'pages/detail';
 
 export default function NavigationRoutes() {
     return useRoutes([
@@ -11,7 +12,8 @@ export default function NavigationRoutes() {
             element: <DashboardComponent />,
             children: [
                 { path: '/', element: <Homepage /> },
-                { path: '/Books', element: <Catalogue /> }
+                { path: '/Books', element: <Catalogue /> },
+                { path: '/Detail', element: <Detail /> }
             ]
         },
         {
