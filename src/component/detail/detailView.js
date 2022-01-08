@@ -32,12 +32,13 @@ import BoltIcon from '@mui/icons-material/Bolt';
 import DoneIcon from '@mui/icons-material/Done';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { BooklistData } from 'mock/data';
-import BookGrid from 'component/catalogue/bookGrid';
+import { Booklist } from 'mock/data';
+import CardTemplate6 from '../card/cardTemplate6';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
     const [bookDetails, setBookDetails] = useState([]);
-    const [tabValue, setTabValue] = useState('');
+    const [tabValue, setTabValue] = useState(0);
     const detailsData = {
         Categories: ['UX', 'Design'],
         Title: "Don't Make Me Think, Revisited",
@@ -55,7 +56,7 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
         <>
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={tabValue} onChange={(e) => setTabValue(e)}>
+                    <Tabs value={tabValue} onChange={(e) => setTabValue(e)} TabIndicatorProps={{ style: { background: '#f44336' } }}>
                         <Tab label="Product Details" />
                         <Tab label="Customer Reviews" />
                     </Tabs>
@@ -69,7 +70,7 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                 <TableCell component="th" scope="row">
                                     <b>{row}</b>
                                 </TableCell>
-                                <TableCell align="right">{bookDetails[row]}</TableCell>
+                                <TableCell>{bookDetails[row]}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -226,7 +227,14 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                     <Typography variant="h2" component="div" m={2}>
                         Related Books
                     </Typography>
-                    <BookGrid />
+                    <CardTemplate6 {...Booklist[4]} />
+                    <CardTemplate6 {...Booklist[2]} />
+                    <CardTemplate6 {...Booklist[3]} />
+                    <Box sx={{ textAlign: 'center' }}>
+                        <Button color="secondary" endIcon={<ArrowForwardIcon />} variant="contained">
+                            View All
+                        </Button>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
